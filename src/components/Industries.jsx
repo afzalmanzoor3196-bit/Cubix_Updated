@@ -27,12 +27,12 @@ const INDUSTRIES = [
 
 export default function Industries() {
   return (
-    <section id="industries" className="bg-white py-24">
+    <section id="industries" className="bg-ink py-24 border-t border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <h2 className="font-display text-4xl font-extrabold text-ink sm:text-5xl">
+        <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
           Industries we serve
         </h2>
-        <p className="mt-6 max-w-2xl text-lg text-neutral-600">
+        <p className="mt-6 max-w-2xl text-lg text-white/60">
           With a wide range of services and proven experience across major industries, we
           understand your challenges and deliver tailored solutions that overcome them and drive
           meaningful impact.
@@ -42,10 +42,10 @@ export default function Industries() {
           {INDUSTRIES.map((ind) => (
             <div
               key={ind.title}
-              className="rounded-3xl border border-neutral-200 p-8 transition-colors hover:border-brand"
+              className="rounded-3xl bg-panel border border-white/5 p-8 transition-all duration-300 hover:border-accent hover:-translate-y-1 shadow-lg shadow-black/25"
             >
-              <h3 className="font-display text-2xl font-extrabold text-ink">{ind.title}</h3>
-              <p className="mt-4 text-neutral-600">{ind.desc}</p>
+              <h3 className="font-display text-2xl font-extrabold text-white">{ind.title}</h3>
+              <p className="mt-4 text-white/60">{ind.desc}</p>
             </div>
           ))}
         </div>

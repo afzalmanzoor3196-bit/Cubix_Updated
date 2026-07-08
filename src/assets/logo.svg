@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Blue Gradient for Z -->
+    <linearGradient id="zBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0062ff" />
+      <stop offset="100%" stop-color="#0022cc" />
+    </linearGradient>
+    <!-- Silver Gradient for V -->
+    <linearGradient id="vSilverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#a8b2c1" />
+    </linearGradient>
+    <!-- Lime Green Gradient for Accent -->
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff3c" />
+      <stop offset="100%" stop-color="#00cc30" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, 10)">
+    <!-- Monogram ZV -->
+    <path d="M 155 110 L 295 110 L 255 180 L 210 180 L 150 280 L 280 280 L 250 330 L 110 330 L 150 260 L 225 260 L 270 180 L 195 180 L 155 110 Z" fill="url(#zBlueGrad)" />
+    <path d="M 270 165 L 315 165 L 348 260 L 385 110 L 430 110 L 365 330 L 320 330 L 270 165 Z" fill="url(#vSilverGrad)" />
+    <polygon points="315,165 370,165 342,215" fill="url(#limeGrad)" />
+  </g>
+
+  <!-- Brand Typography: ZENVÍXO -->
+  <g transform="translate(0, 400)">
+    <text x="250" y="0" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="800" font-size="54" letter-spacing="4">
+      <tspan fill="url(#zBlueGrad)">ZEN</tspan><tspan fill="#ffffff">V</tspan><tspan fill="#ffffff" dx="2">I</tspan><tspan fill="#ffffff">XO</tspan>
+    </text>
+    <!-- Custom green accent above the 'I' -->
+    <polygon points="287,-46 297,-46 303,-36 293,-36" fill="url(#limeGrad)" />
+  </g>
+
+  <!-- Sub-Header: DIGITAL AGENCY -->
+  <g transform="translate(0, 450)">
+    <!-- Left Line -->
+    <line x1="50" y1="-6" x2="160" y2="-6" stroke="url(#limeGrad)" stroke-width="2" />
+    <!-- Text -->
+    <text x="250" y="0" text-anchor="middle" font-family="'Inter', sans-serif" font-size="15" font-weight="700" letter-spacing="6" fill="#8a94a6">DIGITAL AGENCY</text>
+    <!-- Right Line -->
+    <line x1="340" y1="-6" x2="450" y2="-6" stroke="url(#limeGrad)" stroke-width="2" />
+  </g>
+</svg>

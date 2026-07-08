@@ -4,12 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#0a0a0a',
-        panel: '#111213',
+        ink: '#121212',
+        panel: '#1e1e1e',
         brand: {
-          DEFAULT: '#3ee073',
-          light: '#5cf291',
-          dark: '#1fae52',
+          DEFAULT: '#0052ff',
+          light: '#3b82f6',
+          dark: '#003ecc',
+        },
+        accent: {
+          DEFAULT: '#00ff3c',
+          light: '#39ff14',
+          dark: '#00c830',
         },
       },
       fontFamily: {

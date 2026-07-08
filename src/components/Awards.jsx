@@ -10,10 +10,10 @@ const AWARDS = [
 
 export default function Awards() {
   return (
-    <section className="bg-ink py-24">
+    <section className="bg-ink py-24 border-t border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
-          Our awards and <span className="text-brand">recognitions</span>
+          Our awards and <span className="text-accent animate-pulse">recognitions</span>
         </h2>
         <p className="mt-6 max-w-xl text-lg text-white/60">
           Recognized globally for our industry-leading development expertise and innovative
@@ -22,11 +22,11 @@ export default function Awards() {
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {AWARDS.map((a) => (
-            <div key={a.name} className="rounded-2xl bg-panel p-6">
+            <div key={a.name} className="rounded-2xl bg-panel border border-white/5 p-6 shadow-md shadow-black/20">
               <div className="flex items-center justify-between">
                 <span className={`font-display text-lg font-extrabold ${a.color}`}>{a.name}</span>
                 <span className="flex items-center gap-1 text-sm font-bold text-white">
-                  <Star size={14} fill="#3ee073" strokeWidth={0} />
+                  <Star size={14} fill="#00ff3c" strokeWidth={0} />
                   {a.rating}
                 </span>
               </div>

@@ -15,13 +15,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-ink/90 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ink/90 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'
+        }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <a href="#top" className="font-display text-2xl font-extrabold tracking-tight text-white">
-          cubix<span className="text-brand">.</span>
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+        <a href="#top" className="flex items-center">
+          <img src="/src/assets/logo-inline.svg" className="h-9 w-auto" alt="ZENVÍXO" />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
@@ -29,7 +28,7 @@ export default function Navbar() {
             <li key={link}>
               <a
                 href={`#${link.toLowerCase()}`}
-                className="text-[15px] font-medium text-white/80 transition-colors hover:text-white"
+                className="text-[15px] font-medium text-white/80 transition-colors hover:text-accent"
               >
                 {link}
               </a>
@@ -47,7 +46,7 @@ export default function Navbar() {
           </a>
           <a
             href="#contact"
-            className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
+            className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-light hover:scale-[1.03] shadow-lg shadow-brand/20"
           >
             Get in Touch
           </a>
@@ -70,7 +69,7 @@ export default function Navbar() {
                 <a
                   href={`#${link.toLowerCase()}`}
                   onClick={() => setOpen(false)}
-                  className="text-base font-medium text-white/85"
+                  className="text-base font-medium text-white/85 hover:text-accent"
                 >
                   {link}
                 </a>
@@ -79,7 +78,7 @@ export default function Navbar() {
           </ul>
           <a
             href="#contact"
-            className="mt-6 block rounded-full bg-white px-5 py-3 text-center text-sm font-semibold text-ink"
+            className="mt-6 block rounded-full bg-brand px-5 py-3 text-center text-sm font-semibold text-white hover:bg-brand-light"
           >
             Get in Touch
           </a>

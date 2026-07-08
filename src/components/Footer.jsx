@@ -22,12 +22,12 @@ export default function Footer() {
           {COLUMNS.map((col) => (
             <div key={col.heading}>
               <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-brand">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand" /> {col.heading}
+                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" /> {col.heading}
               </p>
               <ul className="space-y-3">
                 {col.links.map((l) => (
                   <li key={l}>
-                    <a href="#top" className="font-display text-lg font-semibold text-white/90 hover:text-brand">
+                    <a href="#top" className="font-display text-lg font-semibold text-white/90 transition-colors hover:text-accent">
                       {l}
                     </a>
                   </li>
@@ -39,7 +39,7 @@ export default function Footer() {
 
         <div className="mt-16 border-t border-white/10 pt-10">
           <p className="mb-6 flex items-center gap-2 text-sm font-semibold text-brand">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand" /> Locations
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" /> Locations
           </p>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {LOCATIONS.map((loc) => (
@@ -54,17 +54,15 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-center justify-between gap-8 border-t border-white/10 py-10 sm:flex-row">
           <div>
             <p className="mb-2 flex items-center gap-2 text-sm font-semibold text-brand">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand" /> Contact
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Contact
             </p>
-            <a href="tel:8669782220" className="block text-lg font-semibold text-white">866-978-2220</a>
-            <a href="mailto:info@cubix.co" className="block text-lg font-semibold text-white/80">info@cubix.co</a>
+            <a href="tel:8669782220" className="block text-lg font-semibold text-white hover:text-accent transition-colors">866-978-2220</a>
+            <a href="mailto:info@zenvixo.com" className="block text-lg font-semibold text-white/80 hover:text-accent transition-colors">info@zenvixo.com</a>
           </div>
 
-          <div className="text-center">
-            <p className="font-display text-2xl font-extrabold text-white">
-              cubix<span className="text-brand">.</span>
-            </p>
-            <p className="mt-2 text-xs text-white/40">&copy; 2026 Cubix. All Rights Reserved</p>
+          <div className="flex flex-col items-center">
+            <img src="/src/assets/logo-inline.svg" className="h-9 w-auto" alt="ZENVÍXO Logo" />
+            <p className="mt-3 text-xs text-white/40">&copy; 2026 ZENVÍXO. All Rights Reserved</p>
           </div>
 
           <div className="flex gap-4">
@@ -72,7 +70,7 @@ export default function Footer() {
               <a
                 key={i}
                 href="#top"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-brand hover:text-ink"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-brand hover:scale-110 shadow-lg shadow-brand/10"
               >
                 <Icon size={16} />
               </a>

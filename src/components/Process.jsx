@@ -61,13 +61,13 @@ export default function Process() {
   }, [])
 
   return (
-    <section id="solutions" className="bg-ink py-24">
+    <section id="solutions" className="bg-ink py-24 border-t border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mb-16 flex flex-wrap items-end justify-between gap-6">
           <h2 className="font-display max-w-lg text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-            Our product <span className="text-brand">development process</span>
+            Our product <span className="text-accent animate-pulse">development process</span>
           </h2>
-          <a href="#solutions" className="flex items-center gap-2 text-base font-semibold text-white hover:text-brand">
+          <a href="#solutions" className="flex items-center gap-2 text-base font-semibold text-white hover:text-accent transition-colors">
             View More <ArrowUpRight size={18} />
           </a>
         </div>
@@ -80,7 +80,7 @@ export default function Process() {
                 ref={(el) => (refs.current[i] = el)}
                 data-index={i}
                 className={`border-l-2 py-10 pl-8 transition-colors ${
-                  active === i ? 'border-brand' : 'border-transparent'
+                  active === i ? 'border-accent' : 'border-transparent'
                 }`}
               >
                 <p className="text-sm font-semibold text-white/50">{step.n}/06</p>
@@ -96,15 +96,22 @@ export default function Process() {
             ))}
           </div>
 
-          <div className="hidden lg:block">
-            <div className="sticky top-32 aspect-square overflow-hidden rounded-xl2 bg-panel">
-              <img
-                src={STEPS[active].img}
-                alt={STEPS[active].title}
-                className="h-full w-full object-cover transition-opacity duration-500"
-              />
+            <div className="sticky top-32 flex items-center justify-center">
+              <div
+                className="relative overflow-hidden bg-panel border-[6px] border-white/5 shadow-2xl shadow-black/60"
+                style={{
+                  width: '340px',
+                  height: '420px',
+                  borderRadius: '50% / 50%',
+                }}
+              >
+                <img
+                  src={STEPS[active].img}
+                  alt={STEPS[active].title}
+                  className="h-full w-full object-cover transition-opacity duration-500"
+                />
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </section>

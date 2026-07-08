@@ -8,8 +8,8 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
-  color: #0a0a0a;
+  background-color: #050505;
+  color: #ffffff;
 }
 
 .font-display {
@@ -17,6 +17,6 @@ body {
 }
 
 ::selection {
-  background-color: #3ee073;
-  color: #0a0a0a;
+  background-color: #0052ff;
+  color: #ffffff;
 }
