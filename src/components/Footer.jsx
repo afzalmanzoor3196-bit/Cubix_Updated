@@ -1,4 +1,5 @@
 import { Linkedin, Twitter, Facebook, Youtube, Dribbble } from 'lucide-react'
+import logoInline from '../assets/logo-inline.svg'
 
 const COLUMNS = [
   { heading: 'Company', links: ['About Us', 'Testimonials', 'Process', 'Contact'] },
@@ -61,7 +62,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center">
-            <img src="/src/assets/logo-inline.svg" className="h-9 w-auto" alt="ZENVÍXO Logo" />
+            <img src={logoInline} className="h-9 w-auto" alt="ZENVÍXO Logo" />
             <p className="mt-3 text-xs text-white/40">&copy; 2026 ZENVÍXO. All Rights Reserved</p>
           </div>
 
