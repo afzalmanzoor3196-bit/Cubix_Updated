@@ -32,24 +32,49 @@ export default function Blogs() {
           </a>
         </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {POSTS.map((p) => (
-            <article key={p.title} className="group cursor-pointer">
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-panel border border-white/5 shadow-md shadow-black/25">
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <p className="mt-5 text-sm font-semibold text-accent">
-                {p.tag} <span className="mx-1 text-white/30">&middot;</span> {p.date}
-              </p>
-              <h3 className="mt-2 text-xl font-bold leading-snug text-white group-hover:text-brand transition-colors">
-                {p.title}
-              </h3>
-            </article>
-          ))}
+        {/* Using items-start to keep staggered top-alignment clean */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 items-start">
+          {POSTS.map((p, index) => {
+            // Apply different image sizes/ratios to match Image 1
+            let aspectClass = 'aspect-[1.5/1]' // Left card default (Large & Broad)
+            if (index === 1) {
+              aspectClass = 'aspect-[1.8/1] w-full max-w-[90%]' // Center card (Smaller/Shorter width and height)
+            } else if (index === 2) {
+              aspectClass = 'aspect-[1.6/1]' // Right card (Medium/Standard)
+            }
+
+            return (
+              <article key={p.title} className="group cursor-pointer">
+                <div className={`${aspectClass} overflow-hidden rounded-3xl bg-panel border border-white/5 shadow-md shadow-black/25`}>
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Tag and date layout mapping Image 1 */}
+                {index === 1 ? (
+                  // Middle card tag layout split with dots/separate alignment
+                  <div className="mt-5 flex justify-between items-start text-sm font-semibold text-accent max-w-[90%]">
+                    <span className="w-1/2 leading-snug">{p.tag}</span>
+                    <span className="text-white/40 flex items-center gap-1.5">
+                      <span className="text-[10px]">&middot;</span> {p.date}
+                    </span>
+                  </div>
+                ) : (
+                  // Standard inline layout for left and right cards
+                  <p className="mt-5 text-sm font-semibold text-accent">
+                    {p.tag} <span className="mx-1.5 text-white/30">&middot;</span> {p.date}
+                  </p>
+                )}
+
+                <h3 className={`mt-3 text-xl font-bold leading-snug text-white group-hover:text-brand transition-colors ${index === 1 ? 'max-w-[90%]' : ''}`}>
+                  {p.title}
+                </h3>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>

@@ -1,5 +1,64 @@
 import { useState } from 'react'
 
+// Map technologies to their respective Devicon slug name or custom class
+const TECH_ICONS = {
+  // Mobile Apps
+  'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg',
+  'UI Kit': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg',
+  'RxSwift': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg',
+  'Combine': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg',
+  'MVVM': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xcode/xcode-original.svg',
+  'Alamofire': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg',
+  'Core Data': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xcode/xcode-original.svg',
+  
+  'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg',
+  'RxJava': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+  'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+  'Retrofit': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg',
+  'Jetpack': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg',
+  
+  // Web Platforms
+  'React': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+  'Next.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
+  'Vue': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg',
+  'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+  'Tailwind CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+  
+  'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+  'Django': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg',
+  'Laravel': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg',
+  'GraphQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg',
+  
+  // Cross Platforms
+  'Flutter': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg',
+  'React Native': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+  'Xamarin': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xamarin/xamarin-original.svg',
+  'Ionic': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ionic/ionic-original.svg',
+  
+  // Games
+  'Unity': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg',
+  'Unreal Engine': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg',
+  'Cocos2d': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
+  'Photon': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+  
+  // Database
+  'PostgreSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+  'MySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+  'MSSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg',
+  'MongoDB': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
+  'Firebase': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg',
+  'Redis': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg',
+  
+  // Cloud & DevOps
+  'AWS': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+  'Azure': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg',
+  'Google Cloud': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg',
+  'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+  'Kubernetes': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg',
+  'Jenkins': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-line.svg',
+  'Terraform': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg',
+}
+
 const TABS = {
   'Mobile Apps': {
     iOS: ['Swift', 'UI Kit', 'RxSwift', 'Combine', 'MVVM', 'Alamofire', 'Core Data'],
@@ -59,16 +118,32 @@ export default function Technologies() {
           <div className="space-y-10 border-l border-white/10 pl-0 lg:pl-10">
             {Object.entries(TABS[tab]).map(([group, items]) => (
               <div key={group}>
-                <h3 className="font-display mb-4 text-2xl font-extrabold text-white">{group}</h3>
-                <div className="flex flex-wrap gap-3">
-                  {items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-panel border border-white/5 px-5 py-2.5 text-sm font-medium text-white/80"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                <h3 className="font-display mb-5 text-2xl font-extrabold text-white">{group}</h3>
+                <div className="flex flex-wrap gap-4">
+                  {items.map((item) => {
+                    const iconUrl = TECH_ICONS[item]
+                    return (
+                      <span
+                        key={item}
+                        className="flex items-center gap-3 rounded-full bg-panel border border-white/10 px-5 py-3 text-sm font-medium text-white/90 hover:border-brand/40 transition-colors shadow-sm"
+                      >
+                        {iconUrl ? (
+                          <img 
+                            src={iconUrl} 
+                            alt={item} 
+                            className={`h-5 w-5 object-contain ${
+                              // Clean rendering filters for white backgrounds where needed or handling dark logos
+                              item === 'Next.js' || item === 'Unreal Engine' ? 'invert brightness-200' : ''
+                            }`}
+                          />
+                        ) : (
+                          // Fallback dot if no logo found
+                          <span className="h-2 w-2 rounded-full bg-accent" />
+                        )}
+                        <span>{item}</span>
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
             ))}

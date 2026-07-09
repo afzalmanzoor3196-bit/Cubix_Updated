@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Star } from 'lucide-react'
 
 const QUOTES = [
@@ -41,9 +42,59 @@ function Stars() {
   )
 }
 
+function AnimatedTestimonialCard({ quote }) {
+  const cardRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Sets visible state depending on if the element is currently visible in viewport
+        setIsVisible(entry.isIntersecting)
+      },
+      {
+        threshold: 0.15, // Triggers when 15% of the card is visible
+        rootMargin: '-5% 0px -10% 0px' // Adjust bounds for earlier exit/entry transitions
+      }
+    )
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={cardRef}
+      className="rounded-3xl border border-white/5 bg-panel p-8 sm:p-10 shadow-lg shadow-black/25 transition-all duration-700 ease-out"
+      style={{
+        opacity: isVisible ? 1 : 0.3,
+        transform: isVisible ? 'scale(1) translateY(0px)' : 'scale(0.85) translateY(40px)',
+        filter: isVisible ? 'blur(0px)' : 'blur(4px)',
+      }}
+    >
+      <p className="text-lg leading-relaxed text-white/85">&ldquo;{quote.quote}&rdquo;</p>
+      <div className="mt-8 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand font-bold text-white shadow-md shadow-brand/10">
+            {quote.initials}
+          </div>
+          <div>
+            <p className="font-semibold text-white">{quote.name}</p>
+            <Stars />
+          </div>
+        </div>
+        <span className="text-sm font-semibold text-white/50">{quote.company}</span>
+      </div>
+    </div>
+  )
+}
+
 export default function Testimonials() {
   return (
-    <section className="bg-ink py-24 border-t border-white/5">
+    <section className="bg-ink py-24 border-t border-white/5 overflow-hidden">
       <div className="mx-auto max-w-5xl px-6 text-center lg:px-10">
         <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
           Our clients simply love <span className="text-accent">what we do</span>
@@ -73,26 +124,9 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-5xl gap-6 px-6 lg:px-10">
+      <div className="mx-auto mt-16 grid max-w-5xl gap-8 px-6 lg:px-10">
         {QUOTES.map((q) => (
-          <div
-            key={q.name}
-            className="rounded-3xl border border-white/5 bg-panel p-8 sm:p-10 shadow-lg shadow-black/25"
-          >
-            <p className="text-lg leading-relaxed text-white/85">&ldquo;{q.quote}&rdquo;</p>
-            <div className="mt-8 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand font-bold text-white shadow-md shadow-brand/10">
-                  {q.initials}
-                </div>
-                <div>
-                  <p className="font-semibold text-white">{q.name}</p>
-                  <Stars />
-                </div>
-              </div>
-              <span className="text-sm font-semibold text-white/50">{q.company}</span>
-            </div>
-          </div>
+          <AnimatedTestimonialCard key={q.name} quote={q} />
         ))}
       </div>
     </section>

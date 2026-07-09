@@ -79,7 +79,7 @@ export default function Process() {
                 key={step.n}
                 ref={(el) => (refs.current[i] = el)}
                 data-index={i}
-                className={`border-l-2 py-10 pl-8 transition-colors ${
+                className={`border-l-2 py-24 pl-8 transition-colors ${
                   active === i ? 'border-accent' : 'border-transparent'
                 }`}
               >
@@ -96,22 +96,48 @@ export default function Process() {
             ))}
           </div>
 
-            <div className="sticky top-32 flex items-center justify-center">
+          {/* Sticky vertical mask container - smaller size and centered */}
+          <div className="hidden lg:flex sticky top-[calc(50vh-240px)] h-fit items-center justify-center">
+            <div
+              className="relative overflow-hidden bg-panel border-[6px] border-white/5 shadow-2xl shadow-black/60"
+              style={{
+                width: '380px',
+                height: '480px',
+                borderRadius: '190px', // Stadium shape adjusted to width/2
+              }}
+            >
+              {/* Dynamic slider container that shifts vertically (slower transition) */}
               <div
-                className="relative overflow-hidden bg-panel border-[6px] border-white/5 shadow-2xl shadow-black/60"
+                className="w-full h-full"
                 style={{
-                  width: '340px',
-                  height: '420px',
-                  borderRadius: '50% / 50%',
+                  transform: `translateY(-${active * 100}%)`,
+                  transition: 'transform 1000ms cubic-bezier(0.25, 1, 0.3, 1)', // Slowed down to 1000ms
                 }}
               >
-                <img
-                  src={STEPS[active].img}
-                  alt={STEPS[active].title}
-                  className="h-full w-full object-cover transition-opacity duration-500"
-                />
+                {STEPS.map((step, i) => (
+                  <div key={step.n} className="w-full h-full relative flex-shrink-0" style={{ height: '480px' }}>
+                    <img
+                      src={step.img}
+                      alt={step.title}
+                      className="h-full w-full object-cover"
+                    />
+                    {/* Step label overlay */}
+                    <div
+                      className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-full px-5 py-1.5 text-xs font-bold tracking-widest uppercase z-10"
+                      style={{
+                        background: 'rgba(0,0,0,0.6)',
+                        backdropFilter: 'blur(10px)',
+                        color: 'white',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                      }}
+                    >
+                      {step.n} — {step.title}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
         </div>
       </div>
     </section>
