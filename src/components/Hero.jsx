@@ -3,6 +3,9 @@ import { ArrowUpRight } from 'lucide-react'
 const LOGOS = ['DreamWorks', 'SONY', 'TISSOT', 'CONVERSE', 'Ray-Ban', 'WFMU', 'Michaels', 'Walmart', 'POLITICO']
 
 export default function Hero() {
+  // Duplicate array multiple times for a seamless loop inside the marquee
+  const doubledLogos = [...LOGOS, ...LOGOS, ...LOGOS]
+
   return (
     <section id="top" className="relative overflow-hidden bg-ink min-h-screen flex flex-col">
       {/* background image + overlay */}
@@ -38,19 +41,43 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* client logo strip */}
-      <div className="relative border-t border-white/10 bg-black/40 py-8">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-12 gap-y-4 px-6 lg:px-10">
-          {LOGOS.map((logo) => (
+      {/* client logo strip - Auto Scrolling Marquee */}
+      <div className="relative border-t border-white/10 bg-black/40 py-6 overflow-hidden">
+        {/* Soft edge blur overlays */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-black/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-black/50 to-transparent" />
+
+        {/* Marquee loop container */}
+        <div className="marquee-client-track flex gap-16 w-max">
+          {doubledLogos.map((logo, index) => (
             <span
-              key={logo}
-              className="text-lg font-bold tracking-tight text-white/70 sm:text-xl"
+              key={`${logo}-${index}`}
+              className="text-lg font-bold tracking-tight text-white/70 sm:text-xl transition-colors hover:text-accent duration-200"
             >
               {logo}
             </span>
           ))}
         </div>
       </div>
+
+      {/* Custom marquee stylesheet */}
+      <style>{`
+        .marquee-client-track {
+          animation: marqueeClient 30s linear infinite;
+        }
+        .marquee-client-track:hover {
+          animation-play-state: paused;
+        }
+        @keyframes marqueeClient {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            /* Offset matches exactly one iteration of LOGOS array */
+            transform: translateX(calc(-33.333% - 18px));
+          }
+        }
+      `}</style>
     </section>
   )
 }
