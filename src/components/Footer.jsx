@@ -1,4 +1,5 @@
 import { Linkedin, Twitter, Facebook, Youtube, Dribbble } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import logoInline from '../assets/logo-inline.svg'
 
 const COLUMNS = [
@@ -82,8 +83,8 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-6 text-xs text-white/40 sm:flex-row">
           <span>Content protected by DMCA.com</span>
           <div className="flex gap-6">
-            <a href="#top" className="hover:text-white">Privacy Policy</a>
-            <a href="#top" className="hover:text-white">Terms &amp; Conditions</a>
+            <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="hover:text-white">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>
