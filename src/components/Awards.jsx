@@ -33,8 +33,8 @@ export default function Awards() {
         {/* Rolling track, stops on hover using Tailwind 'group' / standard custom CSS */}
         <div className="marquee-track flex gap-6 w-max">
           {doubledAwards.map((a, index) => (
-            <div 
-              key={`${a.name}-${index}`} 
+            <div
+              key={`${a.name}-${index}`}
               className="w-[280px] shrink-0 rounded-2xl bg-panel border border-white/5 p-6 shadow-md shadow-black/20 hover:border-brand/40 transition-colors duration-300"
             >
               <div className="flex items-center justify-between">

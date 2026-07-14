@@ -79,15 +79,13 @@ export default function Process() {
                 key={step.n}
                 ref={(el) => (refs.current[i] = el)}
                 data-index={i}
-                className={`border-l-2 py-24 pl-8 transition-colors ${
-                  active === i ? 'border-accent' : 'border-transparent'
-                }`}
+                className={`border-l-2 py-24 pl-8 transition-colors ${active === i ? 'border-accent' : 'border-transparent'
+                  }`}
               >
                 <p className="text-sm font-semibold text-white/50">{step.n}/06</p>
                 <h3
-                  className={`font-display mt-2 text-4xl font-extrabold transition-colors ${
-                    active === i ? 'text-brand' : 'text-white'
-                  }`}
+                  className={`font-display mt-2 text-4xl font-extrabold transition-colors ${active === i ? 'text-brand' : 'text-white'
+                    }`}
                 >
                   {step.title}
                 </h3>

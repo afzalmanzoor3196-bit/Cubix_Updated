@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
-const POSTS = [
+const DEFAULT_POSTS = [
   {
     tag: 'Artificial Intelligence',
     date: '26 May, 2026',
@@ -22,6 +23,18 @@ const POSTS = [
 ]
 
 export default function Blogs() {
+  const [blogs, setBlogs] = useState([])
+
+  useEffect(() => {
+    const local = localStorage.getItem('zenvixo_blogs')
+    if (local) {
+      setBlogs(JSON.parse(local))
+    } else {
+      localStorage.setItem('zenvixo_blogs', JSON.stringify(DEFAULT_POSTS))
+      setBlogs(DEFAULT_POSTS)
+    }
+  }, [])
+
   return (
     <section id="company" className="bg-ink py-24 border-t border-white/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -34,7 +47,7 @@ export default function Blogs() {
 
         {/* Using items-start to keep staggered top-alignment clean */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 items-start">
-          {POSTS.map((p, index) => {
+          {blogs.map((p, index) => {
             // Apply different image sizes/ratios to match Image 1
             let aspectClass = 'aspect-[1.5/1]' // Left card default (Large & Broad)
             if (index === 1) {

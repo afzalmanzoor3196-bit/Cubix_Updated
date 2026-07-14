@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Star } from 'lucide-react'
 
-const QUOTES = [
+const DEFAULT_QUOTES = [
   {
     quote:
       'ZENVÍXO managed to provide successful support and development in a timely manner. The app is still in preparation for the beta launch, but it has been receiving a lot of positive feedback from the client. The team provided excellent workflow and communication throughout the project.',
@@ -31,6 +31,7 @@ const QUOTES = [
     initials: 'CK',
   },
 ]
+
 
 function Stars() {
   return (
@@ -93,8 +94,20 @@ function AnimatedTestimonialCard({ quote }) {
 }
 
 export default function Testimonials() {
+  const [quotes, setQuotes] = useState([])
+
+  useEffect(() => {
+    const local = localStorage.getItem('zenvixo_testimonials')
+    if (local) {
+      setQuotes(JSON.parse(local))
+    } else {
+      localStorage.setItem('zenvixo_testimonials', JSON.stringify(DEFAULT_QUOTES))
+      setQuotes(DEFAULT_QUOTES)
+    }
+  }, [])
+
   return (
-    <section className="bg-ink py-24 border-t border-white/5 overflow-hidden">
+    <section id="testimonials" className="bg-ink py-24 border-t border-white/5 overflow-hidden">
       <div className="mx-auto max-w-5xl px-6 text-center lg:px-10">
         <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
           Our clients simply love <span className="text-accent">what we do</span>
@@ -125,7 +138,7 @@ export default function Testimonials() {
       </div>
 
       <div className="mx-auto mt-16 grid max-w-5xl gap-8 px-6 lg:px-10">
-        {QUOTES.map((q) => (
+        {quotes.map((q) => (
           <AnimatedTestimonialCard key={q.name} quote={q} />
         ))}
       </div>

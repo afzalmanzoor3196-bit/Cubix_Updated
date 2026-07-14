@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Phone, Menu, X } from 'lucide-react'
-import logoInline from '../assets/logo-inline.svg'
+import logo25 from '../assets/Logo 25.png'
 
 const LINKS = ['Services', 'Industries', 'Solutions', 'Work', 'Company', 'Contact']
 
@@ -19,9 +19,9 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ink/90 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'
         }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 lg:px-10">
         <a href="#top" className="flex items-center">
-          <img src={logoInline} className="h-9 w-auto" alt="ZENVÍXO" />
+          <img src={logo25} className="h-24 w-auto object-contain" alt="ZENVÍXO" />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
@@ -39,11 +39,11 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-5 lg:flex">
           <a
-            href="tel:8669782220"
-            className="flex items-center gap-2 text-[15px] font-medium text-white/90 hover:text-white"
+            href="tel:+447346 469948"
+            className="flex items-center gap-2 text-[15px] font-medium text-white/90 hover:text-accent"
           >
             <Phone size={16} strokeWidth={2.2} />
-            866-978-2220
+            +44 7346 469948
           </a>
           <a
             href="#contact"
@@ -88,3 +88,4 @@ export default function Navbar() {
     </header>
   )
 }
+

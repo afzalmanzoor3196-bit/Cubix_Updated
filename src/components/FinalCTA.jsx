@@ -12,7 +12,7 @@ export default function FinalCTA() {
         }
       },
       {
-        threshold: 0.1, // Trigger as soon as 10% of section enters viewport
+        threshold: 0.1,
       }
     )
 
@@ -30,32 +30,33 @@ export default function FinalCTA() {
       className="bg-ink py-28 border-t border-white/5 relative overflow-hidden"
     >
       {/* Subtle radial glow background behind text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-brand/5 blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full bg-accent/5 blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
 
       {/* Outer wrapper applying smooth slide and fade entry styles */}
       <div 
-        className="relative mx-auto max-w-4xl px-6 text-center lg:px-10 transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
+        className="relative mx-auto max-w-4xl px-6 transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
         style={{
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'translateY(0px)' : 'translateY(50px)',
           filter: isVisible ? 'blur(0px)' : 'blur(4px)',
         }}
       >
-        <p className="font-display text-sm font-bold uppercase tracking-widest text-accent">
-          Pull the Trigger!
-        </p>
-        <h2 className="font-display mt-4 text-4xl font-extrabold leading-tight text-white sm:text-6xl">
-          Let&apos;s bring your
-          <br />
-          <span className="bg-gradient-to-r from-brand to-accent bg-clip-text text-transparent">vision to life</span>
-        </h2>
-        <a
-          href="mailto:info@zenvixo.com"
-          className="mt-10 inline-block rounded-full bg-brand hover:bg-brand-light px-8 py-4 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg hover:shadow-brand/30 shadow shadow-brand/10 border border-brand/20"
-        >
-          Get Started
-        </a>
+        <div className="text-center max-w-2xl mx-auto flex flex-col items-center">
+          <p className="font-display text-sm font-bold uppercase tracking-widest text-accent">
+            Pull the Trigger!
+          </p>
+          <h2 className="mt-4 text-5xl font-black tracking-tight leading-tight text-white sm:text-6xl">
+            Let&apos;s bring your
+            <br />
+            <span className="text-accent">vision to life</span>
+          </h2>
+          <a 
+            href="#contact" 
+            className="mt-8 rounded-full bg-white px-8 py-3 text-sm font-bold text-black transition-all hover:bg-zinc-100 hover:scale-[1.03] shadow-lg shadow-white/10"
+          >
+            Get Started
+          </a>
+        </div>
       </div>
     </section>
   )

@@ -39,9 +39,8 @@ export default function Highlights() {
               <li key={t}>
                 <button
                   onClick={() => setTab(t)}
-                  className={`w-full whitespace-nowrap rounded-full px-5 py-3 text-left text-sm font-semibold transition-all ${
-                    tab === t ? 'bg-brand/20 text-white' : 'text-white/60 hover:text-white hover:bg-white/5'
-                  }`}
+                  className={`w-full whitespace-nowrap rounded-full px-5 py-3 text-left text-sm font-semibold transition-all ${tab === t ? 'bg-brand/20 text-white' : 'text-white/60 hover:text-white hover:bg-white/5'
+                    }`}
                 >
                   {t}
                 </button>
